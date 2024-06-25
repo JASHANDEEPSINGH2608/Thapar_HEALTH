@@ -1,0 +1,208 @@
+{% include 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ti Health</title>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    content: box-border;
+}
+.main{
+    display: flex;
+    justify-content:right;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.right-panel{
+    align-items: center;
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #F94F4F;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: aliceblue;
+}
+.right-panel>img{
+    margin-top: 40px;
+    height: 120px;
+}
+.right-panel>h1{
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.right-panel>h3{
+    font-size: 2rem;
+    font-weight: 200; 
+ }
+
+.login{
+    background-color: white;
+    padding: 4%;
+    width: 80%;
+    height: 40%;
+    margin-top: 20px;
+    border-radius: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.login>h2{
+    font-size: 30px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:0;
+    margin-top: 20px;
+}
+form>button{
+    border-radius: 30px;
+    background: #ECECEC;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    box-shadow: 2px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    background-color: #F94F4F;
+    height: 40px;
+    width: 95%;   
+    border: none;
+    margin-top: 12px;
+}
+
+input{
+        border: none;
+        border-bottom: 2px solid #D1D1D4;
+        background: none;
+        padding: 10px;
+        padding-left: 24px;
+        font-weight: 700;
+        width: 80%;
+        transition: .2s;
+        margin: 12px;
+        outline: none;
+}
+.opts{
+    background-color: aliceblue;
+    width: 85%;
+    margin-top: 60px;
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.opts>a{
+    text-decoration: none;
+    padding-top: 1%;
+    margin-left:12%;
+    margin-bottom:0%;
+    padding-bottom: 2%;
+}
+.right-panel-n{
+    align-items: center;
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F94F4F;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: aliceblue;
+}
+.right-panel-n>img{
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.right-panel-n>h1{
+    font-size: 5rem;
+    margin:0;
+    font-weight: 700;
+}
+.right-panel-n>h3{
+    font-size: 2rem;
+    font-weight: 200; 
+ }
+.right-panel-n>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:0;
+    margin-top:40 px;
+}
+.login-n{
+    background-color: white;
+    padding-bottom: 5%;
+    margin-bottom: 10px;
+    width: 80%;
+    border-radius: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.login-n>h2{
+    font-size: 30px;
+    margin: 0;
+}
+@media only screen and (max-width:900px) {
+    .right-panel,.right-panel-n{
+        width:100vh;
+    }
+    .login-n{
+        justify-content: center;
+        height: 50%;
+        padding-bottom: 0;
+    }
+
+}
+.recover{
+    background-color: white;
+    padding: 4%;
+    width: 80%;
+    height: 40%;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-bottom: 20%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}</style>
+</head>
+<body>
+    
+    <div class="main">
+            <div id ="img" >
+             <img src="https://img.freepik.com/free-vector/illustration-online-doctor_23-2148516213.jpg?w=1060&t=st=1714678244~exp=1714678844~hmac=92f2c2ca31204d7b1ce36c28a9cb30d46b93b7df87d11cfb25a951457536522c" alt="Your Image">
+            </div>
+        <div class="right-panel">
+            <img class="logo" src="{% static 'images/logo.png' %}" />
+            <h1>Thapar</h1>
+            <h3>Health Care</h3>
+            <div class="recover">
+                <h2>Recover</h2>
+        <form method="POST" action="{% url 'forgot_view' %}">
+        {% csrf_token %}
+    
+        
+        <input type="email" class="passInput" placeholder="Email" name="email">
+        <button type="submit">Recover</button>
+
+        </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

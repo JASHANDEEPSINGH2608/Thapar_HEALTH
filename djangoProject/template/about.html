@@ -1,0 +1,9 @@
+<p>{{my_text}},{{my_number}},{{my_list}}</p>
+{{my_html|safe|title}}
+<p>{% for my_sub_item in my_list %}
+    {% if my_sub_item == 3 %}
+    {{my_text|capfirst}}
+    {{my_sub_item}}
+    {% endif %}
+{% endfor %}
+</p>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Meet Automation</title>
+    <script>
+        function automateGoogleMeet() {
+            const googleMeetURL = "https://meet.google.com/vao-bhfa-mnm";
+            const openingTime = "{{ appointment.time_slot }}"; // Adjusted to IST time
+
+            function openGoogleMeet() {
+                // Open the Google Meet URL in a new tab
+                window.open(googleMeetURL, "https://meet.google.com/vao-bhfa-mnm");
+
+                // Wait for the Google Meet page to load
+                setTimeout(function () {
+                    // Simulate clicks at specified coordinates
+                    // Adjust these coordinates as needed for your setup
+                    simulateClick(701, 446);
+                    setTimeout(function () {
+                        simulateClick(399, 583);
+                        setTimeout(function () {
+                            simulateClick(490, 583);
+                        }, 2000); // 2 seconds delay
+                    }, 8000); // 8 seconds delay
+                }, 7000); // 7 seconds delay
+            }
+
+            function simulateClick(x, y) {
+                const event = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window,
+                    clientX: x,
+                    clientY: y,
+                });
+
+                const element = document.elementFromPoint(x, y);
+                if (element) {
+                    element.dispatchEvent(event);
+                }
+            }
+
+            // Function to check the current time and trigger automation
+            function checkTimeAndAutomate() {
+                // Create a Date object with IST time zone
+                const currentTime = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })).toLocaleTimeString("en-US", { hour12: false });
+
+                if (currentTime === openingTime) {
+                    openGoogleMeet();
+                }
+            }
+
+            // Periodically check the time (every second)
+            setInterval(checkTimeAndAutomate, 1000);
+        }
+    </script>
+</head>
+<body onload="automateGoogleMeet()">
+    <h1>Google Meet Automation</h1>
+    <p>This page will automatically open Google Meet at the specified time (IST).</p>
+</body>
+</html>

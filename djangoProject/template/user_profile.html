@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            box-sizing:content-box;
+        }
+        h2,h3{
+            font-weight: 400;
+        }
+        #name{
+            font-size: 3rem;
+            font-weight: 600;
+        }
+        .home{
+            background-color: #F94F4F;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 95%;
+            height: 95%;
+            display: flex;
+        }
+        .nav{
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .navbar{
+            height: 80%;
+            width: 100%;
+            color:#FFFFFF;
+            margin: 0;
+        }
+        .navbar>h5{
+            margin-top: 0;
+            opacity: 70%;
+            font-weight: 400;
+        }
+        .navbar>ul{
+            list-style: none;
+            margin: 0;
+            padding: 15% 0% 0%;
+        }
+        .navbar>ul>li{
+            font-size: larger;
+            padding: 8% 2% 8%;
+            font-weight: 600;
+        }
+        #pic{ 
+            height: 60px;
+            width: 60px;
+            border-radius: 10px;
+        }
+        .dash{
+            background-color: white;
+            flex: 4;
+            border-radius: 30px;
+        }
+        #tp{
+            border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-top: 2%;
+    width: 100%;
+    height: 35%;
+    background-color: rgb(255, 234, 231);
+    display: flex;
+        }
+        #pp{
+            width: 250px;
+            height: 250px;
+            margin-top: 2%;
+            margin-left: 40%;
+            border-radius: 20px;
+        }
+        .info{
+            flex-direction: column;
+            padding-left: 5% ;
+            margin:0;
+            margin-left: 15%;
+        }
+        .lp{
+            display: flex;
+            justify-content: space-around;
+            padding-inline: 20%;
+            
+            flex-wrap: wrap;
+        }
+          label {
+            display: block;
+            margin-right: 5px;
+        }
+          
+        input,button {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            /* Other styles as per your design */
+          }
+        
+        .lp textarea{
+            height: 15px;
+            width: 730px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .item{
+            margin: 1.5%;
+            
+        }
+        #pic1{ 
+            height: 200px;
+    width: 200px;
+    border-radius: 200px;
+    margin-left: 40px;
+        }
+        </style>
+</head>
+<body>
+    <div class="home">
+        <div class="main">
+            <div class="nav">
+                <div class="navbar">
+                    {% if user_profile.profile_image %}
+                    <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" id="pic">
+                    {% endif %}
+                <h1>{{user.first_name}}</h1>
+                <h5>{{user.email}}</h5>
+                <ul>
+                <li><a href="{% url 'home' %}" style="color:white">Dashboard</a></li>
+                <li><a href="{% url 'appointment_view' %}" style="color:white">Appointment</a></li>
+                <li><a href="{% url 'History_view' %}" style="color:white">History</a></li>
+                <li><a href="{% url 'userprofile_view'%}" style="color:white">Profile</a></li>  
+                <li> <a href="{% url 'logout_view' %}" style="color:white">Logout</a></li>  
+                </ul>
+                </div>
+            </div>  
+        <div class="dash">
+            <div id="tp">
+                {% if user_profile.profile_image %}
+                <img src="{{ user_profile.profile_image.url }}" id="pic1" alt="Profile Image">
+                {% endif %}
+              
+                <div class="info">
+                    <h1 id="name">Name: {{user.first_name}}</h1>
+                    <h2 id="email">Email: {{user.email}}</h2>
+                    
+                </div>
+            </div>
+
+            
+            <div class="lp">
+                
+                <div class="item">
+                    <form action="{% url 'userprofile_view' %}" method="POST" enctype="multipart/form-data" class="item">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Save</button>
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

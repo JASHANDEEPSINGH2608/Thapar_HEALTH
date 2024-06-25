@@ -1,0 +1,589 @@
+{% include 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .home {
+            background-color: #F94F4F;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            width: 95%;
+            height: 95%;
+            display: flex;
+        }
+
+        .nav {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            height: 80%;
+            width: 100%;
+            color: #FFFFFF;
+            margin: 0;
+        }
+
+        .navbar>h5 {
+            margin-top: 0;
+            opacity: 70%;
+            font-weight: 400;
+        }
+
+        .navbar>ul {
+            list-style: none;
+            margin: 0;
+            padding: 15% 0% 0%;
+        }
+
+        .navbar>ul>li {
+            font-size: larger;
+            padding: 8% 2% 8%;
+            font-weight: 600;
+        }
+
+        .navbar>ul>li>a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #pic {
+            height: 60px;
+            width: 60px;
+            border-radius: 10px;
+        }
+
+        .dash {
+            background-color: white;
+            flex: 4;
+            height:80vh;
+            margin:auto;
+            display: flex;
+            border-radius: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            
+        }
+
+        .fi {
+            height: 240px;
+            width: 350px;
+            background-color: rgb(225, 225, 225);
+            border-radius: 20px;
+            overflow-x: auto;
+        }
+
+        .fi::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+        .time {
+            display: flex;
+            /* justify-content: center; */
+            /* align-items: center; */
+            /* align-content: center; */
+            row-gap: 10%;
+            flex-wrap: wrap;
+        }
+
+        .time>h2 {
+            margin: 0;
+            position: absolute;
+        }
+
+        .time h4 {
+            text-align: center;
+        }
+
+        .dt {
+            background-color:transparent;
+            
+            border-radius: 20px;
+            padding: 0% 0%;
+           margin-top: 35px;
+   
+        }
+
+        .m {
+            text-decoration: none;
+            color: #ca0000;
+            font-size: 27px;
+            font-weight: bold;
+            background-color: rgb(255, 255, 255);
+            padding: 2% 5%;
+            border-radius: 20px;
+           
+            margin-left: 30px;
+
+        }
+        .m2{
+            text-decoration: none;
+            color: #ca0000;
+            font-size: 25px;
+            font-weight: bold;
+            background-color: rgb(255, 255, 255);
+            padding: 2% 0.1%;
+            border-radius: 30px;
+           margin-top: 20px;
+            margin-left: 27px;
+        }
+        #button1{
+            margin-top: 90px;
+            margin-bottom:20px;
+        }
+        #button2{
+            margin-top: 40px;
+            margin-bottom:20px;
+           
+        }
+        .mlink {
+            background-color: rgb(255, 255, 255);
+            padding: 10% 10%;
+            margin-left: 4%;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-bottom: 5%;
+        }
+
+        .recordText{
+            margin-top: 13px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border: black;
+    font-size: 30px;
+        }
+        .mlink a {
+            text-decoration: none;
+            color: #ca0000;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .prescription {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            row-gap: 10%;
+            flex-wrap: wrap;
+        }
+
+        .prescription>h2 {
+            text-align: center;
+            margin: 0% 20%;
+        }
+
+        .pres {
+            color: aliceblue;
+            background-color: #F94F4F;
+            border-radius: 20px;
+            margin: 1.5%;
+            padding: 0% 5%;
+            text-align: center;
+        }
+
+        .pres>h4 {
+            color: black;
+            background-color: #ffffff;
+            padding: 5%;
+            border-radius: 12px;
+        }
+
+        .carousel {
+            position: relative;
+
+        }
+
+        .ci {
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+            background-color: rgb(255, 130, 47);
+            padding: 0%;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .cnav {
+            position: absolute;
+            bottom: 10px;
+            /* Adjust this value as needed */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .cbtn {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background-color: #3e3e3e;
+            display: inline-block;
+            cursor: pointer;
+            margin: 0 5px;
+            /* Adjust this value for spacing between buttons */
+        }
+
+        .record{
+         
+    height: 19vh;
+    width: 44vh;
+    margin-top: 25px;
+    margin-left: 6px;
+    text-align: center;
+    border: 5px solid  #F94F4F;;
+    border-radius: 20px;
+}
+
+      
+
+        .ci.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .cbtn.active {
+            background-color: #fff;
+            /* Change the active button color */
+        }
+
+        /* Add this to your existing CSS styles */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+        }
+        #heading{
+            background-color: #F94F4F;
+    font-size: 1.3em;
+    position: absolute;
+    top: 19.6vh;
+    padding: 0.5%;
+    left: 63.5vh;
+    font-weight: 700;
+    border-radius: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .emergency {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .emergency>h2 {
+            margin-top: 10%;
+        }
+
+        .emergency>h1 {
+            padding: 0% 10%;
+            line-height: 140%;
+        }
+
+        .emergency span {
+            color: #ffffff;
+            background-color: #F94F4F;
+            padding: 2% 5%;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        #scroll{
+            background-color: #F94F4F;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <div class="main">
+            <div class="nav">
+                <div class="navbar">
+                    {% if user_profile.profile_image %}
+                    <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" id="pic">
+                    {% endif %}
+                    <h1>{{user.first_name}}</h1>
+                    <h5>{{user.email}}</h5>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Dashboard</a></li>
+                        <li><a href="{% url 'appointment_view' %}">Appointment</a></li>
+                        <li><a href="{% url 'History_view' %}" style="color:white">History</a></li>
+                        <li><a href="{% url 'userprofile_view'%}">Profile</a></li>
+                        <li><a href="{% url 'logout_view' %}" style="color:white">Logout</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="dash">
+                <div class="flex">
+                    
+                    <div class="fi time" id="scroll">
+                        <h2 id="heading">UPCOMING APPOINTMENTS</h2>
+                        <div class="dt">
+                           
+                            {% if user_appointments %}
+                            {% for appointment in user_appointments %}
+                            
+                            <div class="record">
+                                <h2 class="recordText" style="color:aliceblue;"><strong>Time slot : </strong> {{ appointment.time_slot }}
+                                    
+                                </h2>
+                                <h2 class="recordText" style="color:aliceblue;"><strong>Issue : </strong> {{ appointment.issue }}</h2>
+
+                            </div>
+                            
+                            {% endfor %}
+                            {% else %}
+                            <p style="margin-top: 90px; margin-left: 70px; font-size: large;">No appointments found.</p>
+                            {% endif %}
+
+                        </div>
+                        
+                            <!-- <div class="registration-form">
+                            
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.username.label_tag }} {{ form.username }}
+                                {{ form.password.label_tag }} {{ form.password }}
+                              <li><a href="{% url 'google_meet' %}">JOIN<button type="submit"></button></a></li>
+                            </form>
+                            
+                        </div> -->
+
+                        
+                    </div>
+
+                    <div class="fi emergency">
+                        <h2>IF EMERGENCY</h2>
+                        <h1 onclick="makePhoneCall('+918288008122')">CALL <span>8288008122</span></h1>
+                    </div>
+
+                    <!-- <div class="fi prescription">
+                        <h2>Prescriptions</h2>
+
+                        {% if prescriptions %}
+                        <ul>
+                            {% for prescription in prescriptions %}
+                            <li>
+                                <strong>Appointment:</strong> {{ prescription.appointment }}
+                                <br>
+                                <a href="{{ prescription.file.url }}" download>Download Prescription</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>No prescriptions found.</p>
+                        {% endif %}
+
+                    </div> -->
+                    <div id="cancellationModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="hideCancellationConfirmation()">&times;</span>
+                            <p>Are you sure you want to cancel this appointment?</p>
+                            <button onclick="cancelAppointment()">Yes</button>
+                            <button onclick="hideCancellationConfirmation()">No</button>
+                        </div>
+                    </div>
+
+                    <!-- ... (your existing HTML code) ... -->
+
+                    <div class="fi"
+                        data-appointment-id="{% if user_appointments %}{{ user_appointments.0.id }}{% else %}1{% endif %}">
+                        <form action="{% url 'home' %}" method="POST" id="cancellationForm">
+                            <!-- Add id="cancellationForm" here -->
+                            {% csrf_token %}
+                            <input type="hidden" name="appointment_id"
+                                value="{% if user_appointments %}{{ user_appointments.0.id }}{% else %}1{% endif %}"
+                                class="idd">
+                            <button type="button" onclick="showCancellationConfirmation()" id="button1"class="m">Cancel
+                                Appointment</button>
+                        </form>
+                       
+                    </div>
+
+                    <!-- ... (your existing HTML code) ... -->
+
+
+
+
+                    <div class="fi carousel">
+                        <div class="ci active" ><img style="object-fit: cover;height: 100%; width: 100%;" src="https://fmwaechter.com/wp-content/uploads/2017/01/Health-Awareness-Day-.jpg"/> </div>
+                        <div class="ci"><img style="object-fit: cover;height: 100%; width: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8iV-oVRHGgGuAGch8w7Dl-lD5jx7vvm2FE0IdBw-bNg&s"/></div>
+                        <div class="ci"><img style="object-fit: cover;height: 100%; width: 100%;" src="https://media.licdn.com/dms/image/D4D12AQFARkbux1H_6Q/article-cover_image-shrink_720_1280/0/1683129999679?e=2147483647&v=beta&t=TKXGCQRdo986y1mhoFXVRUTmBhUTcspnCwNlrhGagRw"/></div>
+                        <div class="cnav">
+                            <span class="cbtn"></span>
+                            <span class="cbtn"></span>
+                            <span class="cbtn"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.ci');
+        const buttons = document.querySelectorAll('.cbtn');
+        let currentIndex = 0;
+        let interval = setInterval(rotateCarousel, 10000);
+
+        function changeSlide(index) {
+            buttons.forEach(btn => btn.classList.remove('active'));
+            items.forEach(item => item.classList.remove('active'));
+
+            buttons[index].classList.add('active');
+            items[index].classList.add('active');
+        }
+
+        function rotateCarousel() {
+            currentIndex = (currentIndex + 1) % items.length;
+            changeSlide(currentIndex);
+        }
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                clearInterval(interval); // Clear the automatic rotation interval
+                currentIndex = index;
+                changeSlide(index);
+                setTimeout(() => {
+                    interval = setInterval(rotateCarousel, 10000); // Restart automatic rotation after a delay
+                }, 3000); // Adjust this delay as needed to prevent rapid transitions
+            });
+        });
+
+        function showCancellationConfirmation() {
+            var modal = document.getElementById('cancellationModal');
+            modal.style.display = 'block';
+        }
+
+        function hideCancellationConfirmation() {
+            var modal = document.getElementById('cancellationModal');
+            modal.style.display = 'none';
+        }
+
+        function cancelAppointment() {
+            var form = document.getElementById('cancellationForm');
+            form.submit();
+            hideCancellationConfirmation(); // Close the modal
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function (event) {
+            var modal = document.getElementById('cancellationModal');
+            if (event.target === modal) {
+                hideCancellationConfirmation();
+            }
+        };
+        const carousels = document.querySelectorAll('.carousel');
+
+        carousels.forEach((carousel, carouselIndex) => {
+            const items = carousel.querySelectorAll('.ci');
+            const buttons = carousel.querySelectorAll('.cbtn');
+            let currentIndex = 0;
+            let interval = setInterval(rotateCarousel, 10000);
+
+            function changeSlide(index) {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                items.forEach(item => item.classList.remove('active'));
+
+                buttons[index].classList.add('active');
+                items[index].classList.add('active');
+            }
+
+            function rotateCarousel() {
+                currentIndex = (currentIndex + 1) % items.length;
+                changeSlide(currentIndex);
+            }
+
+            buttons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    clearInterval(interval);
+                    currentIndex = index;
+                    changeSlide(index);
+                    setTimeout(() => {
+                        interval = setInterval(rotateCarousel, 10000);
+                    }, 3000);
+                });
+            });
+        });
+        function makePhoneCall(phoneNumber) {
+            window.location.href = 'tel:' + phoneNumber;
+        }
+    </script>
+</body>
+
+</html>
+
+{% endblock %}

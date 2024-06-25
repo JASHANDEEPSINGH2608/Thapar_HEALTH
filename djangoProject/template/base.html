@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-Thapar Health Management</title>
+    <style>
+        .alert {
+    border-radius: 5px;
+    border: 1px solid #ffc107; /* A golden border */
+    background-color: #fff5e1; /* A light yellow background */
+    color: #d39e00; /* A golden text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* A subtle shadow */
+}
+
+.alert strong {
+    color: #d39e00; /* Making the strong tag golden too */
+}
+
+/* Styling for the close button */
+.alert .btn-close {
+    color: #d39e00; /* Making the X golden */
+    opacity: 1; /* Overriding bootstrap's default opacity to make it fully visible */
+}
+
+.alert .btn-close:hover {
+    color: #b38600; /* Slightly darker golden for hover state */
+    background-color: transparent; /* No background on hover */
+}
+
+    </style>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div> 
+        {% endfor %}
+    {% endif %}
+  
+</body>
+</html>

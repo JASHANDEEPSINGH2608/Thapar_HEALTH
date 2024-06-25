@@ -1,0 +1,230 @@
+{% include 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Thapar Health Management</title>
+    <style>
+      .body,
+.body * {
+box-sizing: border-box;
+}
+
+.body {
+background: #ffffff;
+margin : 0px;
+position: relative;
+overflow: hidden;
+}
+.login-area {
+background: #f94f4f;
+width: 32.438rem;
+height: 100%;
+position: absolute;
+right: 0px;
+top: 0px;
+}
+.login-area {
+.logo {
+  width: 158px;
+  height: 158px;
+  position: absolute;
+  right: 11.3rem;
+  top: 20px;
+}
+.thapar-health-care {
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  left : 2rem;
+  top: 7.625rem;
+  width: 447px;
+  height: 400px;
+}
+.thapar-health-care h1 {
+  font: 800 110px "Be Vietnam", sans-serif;
+  text-align : canter;
+  margin : 0px;
+}
+.thapar-health-care h2 {
+  text-align : center;
+  margin : 4px;
+  font: 300 46px "Be Vietnam", sans-serif;
+}
+.user-login {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 406px;
+  height: 320px;
+  position: relative;
+  left: 35px;
+  top: 10px;
+}
+.user-login h1 {
+  color: #000000;
+  text-align: center;
+  font: 600 36px "Inter", sans-serif;
+  position: absolute;
+  left: 45px;
+  top: 20px;
+  width: 314px;
+  height: 70px;
+}
+.user-login form {
+  position : relative;
+  top : 60px;
+}
+.user-login input {
+  text-align: center;
+  border-radius: 30px;
+  width: 352px;
+  height: 60px;
+  box-shadow: 2px 4px 3px 0px rgba(0, 0, 0, 0.25);
+  border : 0px;
+  color: #777777;
+  font: 400 21px "Inter", sans-serif;
+  background: #ececec;
+  margin : 10px 0px;
+}
+.user-login input[type=submit] {
+  background-color: #F94F4F;
+  color: #ffffff;
+  font: 700 25px "Inter", sans-serif;
+  margin : 20px 0px;
+}
+.login-extra {
+  width: 406px;
+  height: 76px;
+  position: relative;
+  left: 35px;
+  top: 30px;
+}
+.forgot-password {
+  color: #ffffff;
+  text-align: center;
+  font: 600 15px/139.52% "Inter", sans-serif;
+  font-style: italic;
+  position: absolute;
+  left: 40px;
+  top: 12px;
+  width: 100px;
+  height: 60px;
+}
+.new-user {
+  color: #ffffff;
+  text-align: center;
+  font: 600 15px/139.52% "Inter", sans-serif;
+  font-style: italic;
+  position: absolute;
+  right: 40px;
+  top: 12px;
+  width: 110px;
+  height: 60px;
+}
+
+}
+.signup-area {
+background: #f94f4f;
+width: 32.438rem;
+height: 100%;
+position: absolute;
+right: 0px;
+top: 0px;
+}
+.signup-area {
+.logo {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  right: 11.6rem;
+  top: 10px;
+}
+.thapar-health-care {
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  left : 2rem;
+  top: 5rem;
+  width: 447px;
+  height: 400px;
+}
+.thapar-health-care h1 {
+  font: 800 100px "Be Vietnam", sans-serif;
+  text-align : center;
+  margin : 0px;
+}
+.thapar-health-care h2 {
+  text-align : center;
+  margin : 4px;
+  font: 300 40px "Be Vietnam", sans-serif;
+}
+.user-signup {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 406px;
+  height: 450px;
+  position: relative;
+  left: 35px;
+  top: 20px;
+}
+
+.user-signup form {
+  position : relative;
+  top : 10px;
+}
+.user-signup input[type=submit] {
+  background-color: #F94F4F;
+  color: #ffffff; 
+  font: 700 25px "Inter", sans-serif;
+  margin : 18px 0px;
+}
+.user-signup input[type=submit]:hover {
+  transform: scale(1.04);
+}
+.user-signup input {
+  text-align: center;
+  border-radius: 30px;
+  font: 400 21px "Inter", sans-serif;
+  color: #777777;
+  background: #ececec;
+  width: 352px;
+  height: 50px;
+  margin : 8px 0px;
+  box-shadow: 2px 4px 3px 0px rgba(0, 0, 0, 0.25);
+  border : 0px;
+}
+
+}
+  </style>
+</head>
+<body>
+  <div id="main">
+    <div id ="img" >
+     <img src="https://img.freepik.com/free-vector/illustration-online-doctor_23-2148516213.jpg?w=1060&t=st=1714678244~exp=1714678844~hmac=92f2c2ca31204d7b1ce36c28a9cb30d46b93b7df87d11cfb25a951457536522c" alt="Your Image">
+    </div>
+    <div class="signup-area">
+      <img class="logo" src="{% static 'images/logo.png' %}" />
+        <div class="thapar-health-care">
+          <h1>Thapar</h1>
+          <h2>Health Care</h2>
+          <div class="user-signup">
+       <form method="POST" action="{% url 'signup_view' %}">
+        {% csrf_token %}>
+          <input type ="text" class = "first-name" placeholder="First_Name" name="first-name"  required>
+         <input type ="text" class = "last-name" placeholder="Last_Name" name="last-name"  required>
+         <input type="email" class="e-mail" placeholder="Email" name="e-mail" required>
+         <input type="number" class="roll-no" placeholder="Roll No" name="roll_no" required>
+          <input type ="password" class = "password" placeholder="Password" name="password" minlength="8" required>
+         <input type="submit" value="SIGN UP" class ="sign-up">
+         
+       </form>  
+          </div>
+        </div> 
+        </div>   
+</body>
+</html>
+{% endblock %}
